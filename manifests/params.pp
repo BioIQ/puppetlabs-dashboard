@@ -28,7 +28,7 @@ class dashboard::params {
 
   case $::osfamily {
 
-    'RedHat': {
+    'RedHat','Linux': {
       $dashboard_config       = '/etc/sysconfig/puppet-dashboard'
       $dashboard_service      = 'puppet-dashboard'
       $dashboard_package      = 'puppet-dashboard'
