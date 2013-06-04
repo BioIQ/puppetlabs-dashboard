@@ -44,6 +44,5 @@ class dashboard::passenger (
     port     => $dashboard_port,
     priority => '50',
     docroot  => "${dashboard_root}/public",
-    template => 'dashboard/passenger-vhost.erb',
   }
 }
