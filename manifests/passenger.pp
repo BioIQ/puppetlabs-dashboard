@@ -42,7 +42,7 @@ class dashboard::passenger (
 
   apache::vhost { $dashboard_site:
     port     => $dashboard_port,
-    priority => '50',
+    priority => '1',
     docroot  => "${dashboard_root}/public",
   }
 }
