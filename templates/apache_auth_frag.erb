@@ -1,0 +1,7 @@
+<Location / >
+  AuthType Basic
+  AuthName "Bio Auth"
+  AuthBasicProvider file
+  AuthUserFile <%= @passwords_file %>
+  Require valid-user
+</Location>

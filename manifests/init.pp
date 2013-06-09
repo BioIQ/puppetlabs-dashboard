@@ -52,6 +52,9 @@
 #   [*rack_version*]
 #     - The version of the rack gem to install
 #
+#   [*passwords_template*]
+#     - Path to apache passwords file template for basic auth (passenger)
+#
 # Actions:
 #
 # Requires:
@@ -93,7 +96,8 @@ class dashboard (
   $ruby_mysql_package       = $dashboard::params::ruby_mysql_package,
   $dashboard_config         = $dashboard::params::dashboard_config,
   $dashboard_root           = $dashboard::params::dashboard_root,
-  $rack_version             = $dashboard::params::rack_version
+  $rack_version             = $dashboard::params::rack_version,
+  $passwords_template       = undef
 ) inherits dashboard::params {
 
   require mysql
@@ -107,10 +111,11 @@ class dashboard (
 
   if $passenger {
     class { 'dashboard::passenger':
-      dashboard_site   => $dashboard_site,
-      dashboard_port   => $dashboard_port,
-      dashboard_config => $dashboard_config,
-      dashboard_root   => $dashboard_root,
+      dashboard_site     => $dashboard_site,
+      dashboard_port     => $dashboard_port,
+      dashboard_config   => $dashboard_config,
+      dashboard_root     => $dashboard_root,
+      passwords_template => $passwords_template
     }
   } else {
     file { 'dashboard_config':
