@@ -118,7 +118,10 @@ class dashboard (
       dashboard_port     => $dashboard_port,
       dashboard_config   => $dashboard_config,
       dashboard_root     => $dashboard_root,
-      passwords_template => $passwords_template
+      passwords_template => $passwords_template,
+      ssl_enabled        => $ssl_enabled,
+      ssl_cert           => $ssl_cert,
+      ssl_key            => $ssl_key
     }
   } else {
     file { 'dashboard_config':
