@@ -76,11 +76,12 @@ class dashboard::passenger (
     apache::vhost { $dashboard_site:
       port            => $dashboard_port,
       priority        => '1',
+      docroot         => "${dashboard_root}/public",
       rewrite_cond    => '%{HTTPS} off',
       rewrite_rule    => '(.*) https://%{HTTPS_HOST}%{REQUEST_URI}',
     }
 
-    apache::vhost { $dashboard_site:
+    apache::vhost { "${dashboard_site}-ssl":
       port            => $dashboard_ssl_port,
       priority        => '2',
       docroot         => "${dashboard_root}/public",
