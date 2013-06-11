@@ -97,7 +97,10 @@ class dashboard (
   $dashboard_config         = $dashboard::params::dashboard_config,
   $dashboard_root           = $dashboard::params::dashboard_root,
   $rack_version             = $dashboard::params::rack_version,
-  $passwords_template       = undef
+  $passwords_template       = undef,
+  $ssl_enabled              = $dashboard::params::ssl_enabled,
+  $ssl_cert                 = $dashboard::params::ssl_cert,
+  $ssl_key                  = $dashboard::params::ssl_key
 ) inherits dashboard::params {
 
   require mysql
